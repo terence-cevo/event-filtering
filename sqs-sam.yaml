@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+
+Resources:
+  MySQSQueue:
+    Type: 'AWS::SQS::Queue'
+    Properties:
+      QueueName: data-analysis-queue
+
+  DataAnalysisLambdaFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      FunctionName: create-data-analysis
+      Handler: index.handler
+      Runtime: nodejs14.x
+      CodeUri: ./
+      Events:
+        MySQSEvent:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt MySQSQueue.Arn
+            BatchSize: 1
+            FilterPolicy:
+              myMessageAttribute:
+                - "groupAnalysis"
+

@@ -20,7 +20,7 @@ Resources:
           Properties:
             Queue: !GetAtt MySQSQueue.Arn
             BatchSize: 1
-            FilterPolicy:
-              myMessageAttribute:
-                - "groupAnalysis"
+            FilterCriteria:
+              Filters:
+                - Pattern: '{"type": ["groupAnalysis"]}'
 

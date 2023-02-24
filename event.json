@@ -1,0 +1,11 @@
+{
+  "comment" : "event stored in sqs",
+  "eventId": "12389-239023-190234",
+  "details": {
+    "eventType": "edit",
+    "type": "group",
+    "name": "Process my data",
+    "organisationId": "12345",
+    "data": [1, 1, 2, 3, 4, 5]
+  }
+}

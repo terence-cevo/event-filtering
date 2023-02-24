@@ -22,5 +22,5 @@ Resources:
             BatchSize: 1
             FilterCriteria:
               Filters:
-                - Pattern: '{"type": ["groupAnalysis"]}'
+                - Pattern: '{"details": {"data": ["group]}}'
 
